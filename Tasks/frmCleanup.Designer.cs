@@ -34,6 +34,7 @@
             this.taskDialogButton1 = new Ookii.Dialogs.WinForms.TaskDialogButton(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.cbWindowsDefScanHistory = new System.Windows.Forms.CheckBox();
             this.cbExplorerIconCache = new System.Windows.Forms.CheckBox();
             this.cbExplorerThumbCache = new System.Windows.Forms.CheckBox();
             this.cbSystemErrorReporting = new System.Windows.Forms.CheckBox();
@@ -50,18 +51,15 @@
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lblNotDetected = new System.Windows.Forms.Label();
             this.cbChromeSavedPasswords = new System.Windows.Forms.CheckBox();
             this.cbEdgeSessions = new System.Windows.Forms.CheckBox();
             this.cbDiscordCookies = new System.Windows.Forms.CheckBox();
-            this.lblEdgeNotDetected = new System.Windows.Forms.Label();
             this.cbEdgeSearchHistory = new System.Windows.Forms.CheckBox();
             this.cbEdgeCookies = new System.Windows.Forms.CheckBox();
             this.cbEdgeCache = new System.Windows.Forms.CheckBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.lblDiscordNotDetected = new System.Windows.Forms.Label();
-            this.lblChromeNotDetected = new System.Windows.Forms.Label();
-            this.lblFirefoxNotDetected = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cbChromeCache = new System.Windows.Forms.CheckBox();
             this.cbChromeSessions = new System.Windows.Forms.CheckBox();
@@ -77,7 +75,6 @@
             this.cbDiscordCache = new System.Windows.Forms.CheckBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label19 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
@@ -97,7 +94,7 @@
             this.button7 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.btnCleanup = new System.Windows.Forms.Button();
-            this.btnCopyLogs = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -115,7 +112,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Tasks.Properties.Resources.windows_10;
-            this.pictureBox1.Location = new System.Drawing.Point(107, 13);
+            this.pictureBox1.Location = new System.Drawing.Point(113, 26);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(32, 29);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -127,7 +124,7 @@
             this.label2.AutoSize = true;
             this.label2.Cursor = System.Windows.Forms.Cursors.Default;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 13.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(6, 13);
+            this.label2.Location = new System.Drawing.Point(12, 26);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label2.Size = new System.Drawing.Size(89, 25);
@@ -139,12 +136,14 @@
             this.cbSystemPrefetch.AutoSize = true;
             this.cbSystemPrefetch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbSystemPrefetch.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbSystemPrefetch.Location = new System.Drawing.Point(6, 78);
+            this.cbSystemPrefetch.Location = new System.Drawing.Point(12, 91);
             this.cbSystemPrefetch.Name = "cbSystemPrefetch";
             this.cbSystemPrefetch.Size = new System.Drawing.Size(74, 21);
             this.cbSystemPrefetch.TabIndex = 4;
             this.cbSystemPrefetch.Text = "Prefetch";
             this.cbSystemPrefetch.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.toolTip1.SetToolTip(this.cbSystemPrefetch, "The cache of application loading times.\r\nNote that programs may take longer to lo" +
+        "ad if you delete this. ");
             this.cbSystemPrefetch.UseVisualStyleBackColor = true;
             // 
             // cbSystemTempFolders
@@ -152,12 +151,13 @@
             this.cbSystemTempFolders.AutoSize = true;
             this.cbSystemTempFolders.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbSystemTempFolders.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbSystemTempFolders.Location = new System.Drawing.Point(6, 48);
+            this.cbSystemTempFolders.Location = new System.Drawing.Point(12, 61);
             this.cbSystemTempFolders.Name = "cbSystemTempFolders";
             this.cbSystemTempFolders.Size = new System.Drawing.Size(106, 21);
             this.cbSystemTempFolders.TabIndex = 3;
             this.cbSystemTempFolders.Text = "Temp Folders";
             this.cbSystemTempFolders.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.toolTip1.SetToolTip(this.cbSystemTempFolders, "Cleans temporary files that the system no longer needs.");
             this.cbSystemTempFolders.UseVisualStyleBackColor = true;
             // 
             // cbSystemRecycleBin
@@ -165,12 +165,13 @@
             this.cbSystemRecycleBin.AutoSize = true;
             this.cbSystemRecycleBin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbSystemRecycleBin.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbSystemRecycleBin.Location = new System.Drawing.Point(6, 108);
+            this.cbSystemRecycleBin.Location = new System.Drawing.Point(12, 121);
             this.cbSystemRecycleBin.Name = "cbSystemRecycleBin";
             this.cbSystemRecycleBin.Size = new System.Drawing.Size(131, 21);
             this.cbSystemRecycleBin.TabIndex = 2;
             this.cbSystemRecycleBin.Text = "Empty Recycle Bin";
             this.cbSystemRecycleBin.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.toolTip1.SetToolTip(this.cbSystemRecycleBin, "Empties your Recycle Bin.");
             this.cbSystemRecycleBin.UseVisualStyleBackColor = true;
             // 
             // cbExplorerDownloads
@@ -178,16 +179,20 @@
             this.cbExplorerDownloads.AutoSize = true;
             this.cbExplorerDownloads.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbExplorerDownloads.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbExplorerDownloads.Location = new System.Drawing.Point(6, 501);
+            this.cbExplorerDownloads.Location = new System.Drawing.Point(12, 515);
             this.cbExplorerDownloads.Name = "cbExplorerDownloads";
             this.cbExplorerDownloads.Size = new System.Drawing.Size(133, 21);
             this.cbExplorerDownloads.TabIndex = 1;
             this.cbExplorerDownloads.Text = "Downloads Folder";
             this.cbExplorerDownloads.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.toolTip1.SetToolTip(this.cbExplorerDownloads, "The Downloads Folder.");
             this.cbExplorerDownloads.UseVisualStyleBackColor = true;
             // 
             // CleanupLogsLBox
             // 
+            this.CleanupLogsLBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CleanupLogsLBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(22)))));
             this.CleanupLogsLBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CleanupLogsLBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -197,10 +202,11 @@
             this.CleanupLogsLBox.ItemHeight = 17;
             this.CleanupLogsLBox.Items.AddRange(new object[] {
             "Cleanup Logs:"});
-            this.CleanupLogsLBox.Location = new System.Drawing.Point(743, 21);
+            this.CleanupLogsLBox.Location = new System.Drawing.Point(8, 816);
             this.CleanupLogsLBox.Name = "CleanupLogsLBox";
-            this.CleanupLogsLBox.Size = new System.Drawing.Size(444, 835);
+            this.CleanupLogsLBox.Size = new System.Drawing.Size(158, 36);
             this.CleanupLogsLBox.TabIndex = 1;
+            this.CleanupLogsLBox.Visible = false;
             // 
             // taskDialog1
             // 
@@ -218,6 +224,8 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
@@ -229,12 +237,13 @@
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(733, 800);
+            this.tabControl1.Size = new System.Drawing.Size(972, 800);
             this.tabControl1.TabIndex = 36;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(22)))));
+            this.tabPage1.Controls.Add(this.cbWindowsDefScanHistory);
             this.tabPage1.Controls.Add(this.cbExplorerIconCache);
             this.tabPage1.Controls.Add(this.cbExplorerThumbCache);
             this.tabPage1.Controls.Add(this.cbSystemErrorReporting);
@@ -261,21 +270,36 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(725, 767);
+            this.tabPage1.Size = new System.Drawing.Size(964, 767);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "System";
+            // 
+            // cbWindowsDefScanHistory
+            // 
+            this.cbWindowsDefScanHistory.AutoSize = true;
+            this.cbWindowsDefScanHistory.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbWindowsDefScanHistory.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbWindowsDefScanHistory.Location = new System.Drawing.Point(12, 271);
+            this.cbWindowsDefScanHistory.Name = "cbWindowsDefScanHistory";
+            this.cbWindowsDefScanHistory.Size = new System.Drawing.Size(214, 21);
+            this.cbWindowsDefScanHistory.TabIndex = 36;
+            this.cbWindowsDefScanHistory.Text = "Windows Defender Scan History";
+            this.cbWindowsDefScanHistory.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.toolTip1.SetToolTip(this.cbWindowsDefScanHistory, "The scan history for Windows Defender.");
+            this.cbWindowsDefScanHistory.UseVisualStyleBackColor = true;
             // 
             // cbExplorerIconCache
             // 
             this.cbExplorerIconCache.AutoSize = true;
             this.cbExplorerIconCache.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbExplorerIconCache.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbExplorerIconCache.Location = new System.Drawing.Point(6, 561);
+            this.cbExplorerIconCache.Location = new System.Drawing.Point(12, 575);
             this.cbExplorerIconCache.Name = "cbExplorerIconCache";
             this.cbExplorerIconCache.Size = new System.Drawing.Size(90, 21);
             this.cbExplorerIconCache.TabIndex = 35;
             this.cbExplorerIconCache.Text = "Icon Cache";
             this.cbExplorerIconCache.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.toolTip1.SetToolTip(this.cbExplorerIconCache, "Windows Icon Cache.");
             this.cbExplorerIconCache.UseVisualStyleBackColor = true;
             // 
             // cbExplorerThumbCache
@@ -283,12 +307,13 @@
             this.cbExplorerThumbCache.AutoSize = true;
             this.cbExplorerThumbCache.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbExplorerThumbCache.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbExplorerThumbCache.Location = new System.Drawing.Point(6, 531);
+            this.cbExplorerThumbCache.Location = new System.Drawing.Point(12, 545);
             this.cbExplorerThumbCache.Name = "cbExplorerThumbCache";
             this.cbExplorerThumbCache.Size = new System.Drawing.Size(126, 21);
             this.cbExplorerThumbCache.TabIndex = 34;
             this.cbExplorerThumbCache.Text = "Thumbnail Cache";
             this.cbExplorerThumbCache.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.toolTip1.SetToolTip(this.cbExplorerThumbCache, "Windows Thumbnail Cache.");
             this.cbExplorerThumbCache.UseVisualStyleBackColor = true;
             // 
             // cbSystemErrorReporting
@@ -296,12 +321,13 @@
             this.cbSystemErrorReporting.AutoSize = true;
             this.cbSystemErrorReporting.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbSystemErrorReporting.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbSystemErrorReporting.Location = new System.Drawing.Point(6, 228);
+            this.cbSystemErrorReporting.Location = new System.Drawing.Point(12, 241);
             this.cbSystemErrorReporting.Name = "cbSystemErrorReporting";
             this.cbSystemErrorReporting.Size = new System.Drawing.Size(119, 21);
             this.cbSystemErrorReporting.TabIndex = 33;
             this.cbSystemErrorReporting.Text = "Error Reporting";
             this.cbSystemErrorReporting.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.toolTip1.SetToolTip(this.cbSystemErrorReporting, "Windows Error Reports.");
             this.cbSystemErrorReporting.UseVisualStyleBackColor = true;
             // 
             // cbSystemMemDumps
@@ -309,12 +335,13 @@
             this.cbSystemMemDumps.AutoSize = true;
             this.cbSystemMemDumps.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbSystemMemDumps.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbSystemMemDumps.Location = new System.Drawing.Point(6, 198);
+            this.cbSystemMemDumps.Location = new System.Drawing.Point(12, 211);
             this.cbSystemMemDumps.Name = "cbSystemMemDumps";
             this.cbSystemMemDumps.Size = new System.Drawing.Size(121, 21);
             this.cbSystemMemDumps.TabIndex = 32;
             this.cbSystemMemDumps.Text = "Memory Dumps";
             this.cbSystemMemDumps.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.toolTip1.SetToolTip(this.cbSystemMemDumps, "Crash reports after memory dumps occurr.");
             this.cbSystemMemDumps.UseVisualStyleBackColor = true;
             // 
             // cbSystemDirectXCache
@@ -322,12 +349,13 @@
             this.cbSystemDirectXCache.AutoSize = true;
             this.cbSystemDirectXCache.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbSystemDirectXCache.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbSystemDirectXCache.Location = new System.Drawing.Point(6, 168);
+            this.cbSystemDirectXCache.Location = new System.Drawing.Point(12, 181);
             this.cbSystemDirectXCache.Name = "cbSystemDirectXCache";
             this.cbSystemDirectXCache.Size = new System.Drawing.Size(153, 21);
             this.cbSystemDirectXCache.TabIndex = 31;
             this.cbSystemDirectXCache.Text = "DirectX Shader Cache";
             this.cbSystemDirectXCache.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.toolTip1.SetToolTip(this.cbSystemDirectXCache, "The DirectX Shader Cache.");
             this.cbSystemDirectXCache.UseVisualStyleBackColor = true;
             // 
             // cbSystemEventLogs
@@ -335,12 +363,13 @@
             this.cbSystemEventLogs.AutoSize = true;
             this.cbSystemEventLogs.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbSystemEventLogs.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbSystemEventLogs.Location = new System.Drawing.Point(6, 138);
+            this.cbSystemEventLogs.Location = new System.Drawing.Point(12, 151);
             this.cbSystemEventLogs.Name = "cbSystemEventLogs";
             this.cbSystemEventLogs.Size = new System.Drawing.Size(90, 21);
             this.cbSystemEventLogs.TabIndex = 30;
             this.cbSystemEventLogs.Text = "Event Logs";
             this.cbSystemEventLogs.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.toolTip1.SetToolTip(this.cbSystemEventLogs, "The event logs found in eventvwr.exe");
             this.cbSystemEventLogs.UseVisualStyleBackColor = true;
             // 
             // button2
@@ -350,7 +379,7 @@
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(118, 369);
+            this.button2.Location = new System.Drawing.Point(124, 383);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(126, 24);
             this.button2.TabIndex = 29;
@@ -366,7 +395,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(118, 339);
+            this.button1.Location = new System.Drawing.Point(124, 353);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(126, 24);
             this.button1.TabIndex = 28;
@@ -379,18 +408,20 @@
             this.cbExplorerRecents.AutoSize = true;
             this.cbExplorerRecents.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbExplorerRecents.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbExplorerRecents.Location = new System.Drawing.Point(6, 471);
+            this.cbExplorerRecents.Location = new System.Drawing.Point(12, 485);
             this.cbExplorerRecents.Name = "cbExplorerRecents";
             this.cbExplorerRecents.Size = new System.Drawing.Size(95, 21);
             this.cbExplorerRecents.TabIndex = 24;
             this.cbExplorerRecents.Text = "Recent Files";
             this.cbExplorerRecents.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.toolTip1.SetToolTip(this.cbExplorerRecents, "Clears the \"Recent Files\" tab in explorer.exe\r\nThis does not delete the files IN " +
+        "the Recent Files.");
             this.cbExplorerRecents.UseVisualStyleBackColor = true;
             // 
             // pictureBox7
             // 
             this.pictureBox7.Image = global::Tasks.Properties.Resources.Terminal;
-            this.pictureBox7.Location = new System.Drawing.Point(107, 298);
+            this.pictureBox7.Location = new System.Drawing.Point(113, 312);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(32, 29);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -402,7 +433,7 @@
             this.label4.AutoSize = true;
             this.label4.Cursor = System.Windows.Forms.Cursors.Default;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 13.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(6, 298);
+            this.label4.Location = new System.Drawing.Point(12, 312);
             this.label4.Name = "label4";
             this.label4.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label4.Size = new System.Drawing.Size(72, 25);
@@ -414,7 +445,7 @@
             this.cbSystemARPCache.AutoSize = true;
             this.cbSystemARPCache.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbSystemARPCache.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbSystemARPCache.Location = new System.Drawing.Point(6, 371);
+            this.cbSystemARPCache.Location = new System.Drawing.Point(12, 385);
             this.cbSystemARPCache.Name = "cbSystemARPCache";
             this.cbSystemARPCache.Size = new System.Drawing.Size(89, 21);
             this.cbSystemARPCache.TabIndex = 21;
@@ -427,7 +458,7 @@
             this.cbSystemDNSCache.AutoSize = true;
             this.cbSystemDNSCache.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbSystemDNSCache.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbSystemDNSCache.Location = new System.Drawing.Point(6, 341);
+            this.cbSystemDNSCache.Location = new System.Drawing.Point(12, 355);
             this.cbSystemDNSCache.Name = "cbSystemDNSCache";
             this.cbSystemDNSCache.Size = new System.Drawing.Size(92, 21);
             this.cbSystemDNSCache.TabIndex = 20;
@@ -438,7 +469,7 @@
             // pictureBox6
             // 
             this.pictureBox6.Image = global::Tasks.Properties.Resources.Explorer;
-            this.pictureBox6.Location = new System.Drawing.Point(106, 429);
+            this.pictureBox6.Location = new System.Drawing.Point(112, 443);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(32, 29);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -450,7 +481,7 @@
             this.label1.AutoSize = true;
             this.label1.Cursor = System.Windows.Forms.Cursors.Default;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 13.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(6, 433);
+            this.label1.Location = new System.Drawing.Point(12, 447);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label1.Size = new System.Drawing.Size(81, 25);
@@ -460,18 +491,15 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(22)))));
+            this.tabPage2.Controls.Add(this.lblNotDetected);
             this.tabPage2.Controls.Add(this.cbChromeSavedPasswords);
             this.tabPage2.Controls.Add(this.cbEdgeSessions);
             this.tabPage2.Controls.Add(this.cbDiscordCookies);
-            this.tabPage2.Controls.Add(this.lblEdgeNotDetected);
             this.tabPage2.Controls.Add(this.cbEdgeSearchHistory);
             this.tabPage2.Controls.Add(this.cbEdgeCookies);
             this.tabPage2.Controls.Add(this.cbEdgeCache);
             this.tabPage2.Controls.Add(this.pictureBox8);
             this.tabPage2.Controls.Add(this.label18);
-            this.tabPage2.Controls.Add(this.lblDiscordNotDetected);
-            this.tabPage2.Controls.Add(this.lblChromeNotDetected);
-            this.tabPage2.Controls.Add(this.lblFirefoxNotDetected);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.cbChromeCache);
             this.tabPage2.Controls.Add(this.cbChromeSessions);
@@ -490,9 +518,22 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(725, 767);
+            this.tabPage2.Size = new System.Drawing.Size(964, 767);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Applications";
+            // 
+            // lblNotDetected
+            // 
+            this.lblNotDetected.AutoSize = true;
+            this.lblNotDetected.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblNotDetected.ForeColor = System.Drawing.Color.Silver;
+            this.lblNotDetected.Location = new System.Drawing.Point(6, 745);
+            this.lblNotDetected.Name = "lblNotDetected";
+            this.lblNotDetected.Size = new System.Drawing.Size(550, 19);
+            this.lblNotDetected.TabIndex = 46;
+            this.lblNotDetected.Text = "Some applications are not detected, the checkboxes have been automatically disabl" +
+    "ed.";
+            this.lblNotDetected.Visible = false;
             // 
             // cbChromeSavedPasswords
             // 
@@ -514,7 +555,7 @@
             this.cbEdgeSessions.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbEdgeSessions.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbEdgeSessions.ForeColor = System.Drawing.Color.White;
-            this.cbEdgeSessions.Location = new System.Drawing.Point(16, 368);
+            this.cbEdgeSessions.Location = new System.Drawing.Point(619, 152);
             this.cbEdgeSessions.Name = "cbEdgeSessions";
             this.cbEdgeSessions.Size = new System.Drawing.Size(77, 21);
             this.cbEdgeSessions.TabIndex = 44;
@@ -528,7 +569,7 @@
             this.cbDiscordCookies.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbDiscordCookies.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbDiscordCookies.ForeColor = System.Drawing.Color.White;
-            this.cbDiscordCookies.Location = new System.Drawing.Point(16, 565);
+            this.cbDiscordCookies.Location = new System.Drawing.Point(16, 352);
             this.cbDiscordCookies.Name = "cbDiscordCookies";
             this.cbDiscordCookies.Size = new System.Drawing.Size(73, 21);
             this.cbDiscordCookies.TabIndex = 43;
@@ -536,25 +577,13 @@
             this.cbDiscordCookies.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.cbDiscordCookies.UseVisualStyleBackColor = true;
             // 
-            // lblEdgeNotDetected
-            // 
-            this.lblEdgeNotDetected.AutoSize = true;
-            this.lblEdgeNotDetected.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.lblEdgeNotDetected.ForeColor = System.Drawing.Color.Silver;
-            this.lblEdgeNotDetected.Location = new System.Drawing.Point(14, 392);
-            this.lblEdgeNotDetected.Name = "lblEdgeNotDetected";
-            this.lblEdgeNotDetected.Size = new System.Drawing.Size(138, 19);
-            this.lblEdgeNotDetected.TabIndex = 41;
-            this.lblEdgeNotDetected.Text = "Edge is not detected.";
-            this.lblEdgeNotDetected.Visible = false;
-            // 
             // cbEdgeSearchHistory
             // 
             this.cbEdgeSearchHistory.AutoSize = true;
             this.cbEdgeSearchHistory.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbEdgeSearchHistory.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbEdgeSearchHistory.ForeColor = System.Drawing.Color.White;
-            this.cbEdgeSearchHistory.Location = new System.Drawing.Point(16, 338);
+            this.cbEdgeSearchHistory.Location = new System.Drawing.Point(619, 122);
             this.cbEdgeSearchHistory.Name = "cbEdgeSearchHistory";
             this.cbEdgeSearchHistory.Size = new System.Drawing.Size(111, 21);
             this.cbEdgeSearchHistory.TabIndex = 40;
@@ -568,7 +597,7 @@
             this.cbEdgeCookies.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbEdgeCookies.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbEdgeCookies.ForeColor = System.Drawing.Color.White;
-            this.cbEdgeCookies.Location = new System.Drawing.Point(16, 308);
+            this.cbEdgeCookies.Location = new System.Drawing.Point(619, 92);
             this.cbEdgeCookies.Name = "cbEdgeCookies";
             this.cbEdgeCookies.Size = new System.Drawing.Size(73, 21);
             this.cbEdgeCookies.TabIndex = 39;
@@ -583,7 +612,7 @@
             this.cbEdgeCache.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbEdgeCache.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbEdgeCache.ForeColor = System.Drawing.Color.White;
-            this.cbEdgeCache.Location = new System.Drawing.Point(16, 278);
+            this.cbEdgeCache.Location = new System.Drawing.Point(619, 62);
             this.cbEdgeCache.Name = "cbEdgeCache";
             this.cbEdgeCache.Size = new System.Drawing.Size(62, 21);
             this.cbEdgeCache.TabIndex = 38;
@@ -594,7 +623,7 @@
             // pictureBox8
             // 
             this.pictureBox8.Image = global::Tasks.Properties.Resources.MicrosoftEdge;
-            this.pictureBox8.Location = new System.Drawing.Point(13, 243);
+            this.pictureBox8.Location = new System.Drawing.Point(616, 27);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(32, 29);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -606,47 +635,11 @@
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Segoe UI Semibold", 13.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(48, 243);
+            this.label18.Location = new System.Drawing.Point(651, 27);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(138, 25);
             this.label18.TabIndex = 36;
             this.label18.Text = "Microsoft Edge";
-            // 
-            // lblDiscordNotDetected
-            // 
-            this.lblDiscordNotDetected.AutoSize = true;
-            this.lblDiscordNotDetected.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.lblDiscordNotDetected.ForeColor = System.Drawing.Color.Silver;
-            this.lblDiscordNotDetected.Location = new System.Drawing.Point(16, 589);
-            this.lblDiscordNotDetected.Name = "lblDiscordNotDetected";
-            this.lblDiscordNotDetected.Size = new System.Drawing.Size(155, 19);
-            this.lblDiscordNotDetected.TabIndex = 35;
-            this.lblDiscordNotDetected.Text = "Discord is not detected.";
-            this.lblDiscordNotDetected.Visible = false;
-            // 
-            // lblChromeNotDetected
-            // 
-            this.lblChromeNotDetected.AutoSize = true;
-            this.lblChromeNotDetected.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.lblChromeNotDetected.ForeColor = System.Drawing.Color.Silver;
-            this.lblChromeNotDetected.Location = new System.Drawing.Point(14, 202);
-            this.lblChromeNotDetected.Name = "lblChromeNotDetected";
-            this.lblChromeNotDetected.Size = new System.Drawing.Size(157, 19);
-            this.lblChromeNotDetected.TabIndex = 33;
-            this.lblChromeNotDetected.Text = "Chrome is not detected.";
-            this.lblChromeNotDetected.Visible = false;
-            // 
-            // lblFirefoxNotDetected
-            // 
-            this.lblFirefoxNotDetected.AutoSize = true;
-            this.lblFirefoxNotDetected.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.lblFirefoxNotDetected.ForeColor = System.Drawing.Color.Silver;
-            this.lblFirefoxNotDetected.Location = new System.Drawing.Point(313, 150);
-            this.lblFirefoxNotDetected.Name = "lblFirefoxNotDetected";
-            this.lblFirefoxNotDetected.Size = new System.Drawing.Size(151, 19);
-            this.lblFirefoxNotDetected.TabIndex = 32;
-            this.lblFirefoxNotDetected.Text = "Firefox is not detected.";
-            this.lblFirefoxNotDetected.Visible = false;
             // 
             // label3
             // 
@@ -672,7 +665,6 @@
             this.cbChromeCache.Text = "Cache";
             this.cbChromeCache.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.cbChromeCache.UseVisualStyleBackColor = true;
-            this.cbChromeCache.CheckStateChanged += new System.EventHandler(this.cbChromeCache_CheckStateChanged);
             // 
             // cbChromeSessions
             // 
@@ -796,7 +788,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 13.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(48, 500);
+            this.label6.Location = new System.Drawing.Point(48, 287);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(75, 25);
             this.label6.TabIndex = 14;
@@ -808,7 +800,7 @@
             this.cbDiscordCache.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbDiscordCache.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbDiscordCache.ForeColor = System.Drawing.Color.White;
-            this.cbDiscordCache.Location = new System.Drawing.Point(16, 535);
+            this.cbDiscordCache.Location = new System.Drawing.Point(16, 322);
             this.cbDiscordCache.Name = "cbDiscordCache";
             this.cbDiscordCache.Size = new System.Drawing.Size(62, 21);
             this.cbDiscordCache.TabIndex = 15;
@@ -819,7 +811,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Tasks.Properties.Resources.Discord;
-            this.pictureBox2.Location = new System.Drawing.Point(13, 500);
+            this.pictureBox2.Location = new System.Drawing.Point(13, 287);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(32, 29);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -829,7 +821,6 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(22)))));
-            this.tabPage3.Controls.Add(this.label19);
             this.tabPage3.Controls.Add(this.label17);
             this.tabPage3.Controls.Add(this.label14);
             this.tabPage3.Controls.Add(this.button3);
@@ -843,29 +834,20 @@
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabPage3.Size = new System.Drawing.Size(725, 767);
+            this.tabPage3.Size = new System.Drawing.Size(964, 767);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Browser Extensions";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.ForeColor = System.Drawing.Color.Red;
-            this.label19.Location = new System.Drawing.Point(7, 120);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(291, 20);
-            this.label19.TabIndex = 45;
-            this.label19.Text = "Save your work before using this feature!";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.ForeColor = System.Drawing.Color.Red;
-            this.label17.Location = new System.Drawing.Point(7, 100);
+            this.label17.Location = new System.Drawing.Point(12, 100);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(483, 20);
+            this.label17.Size = new System.Drawing.Size(432, 40);
             this.label17.TabIndex = 44;
-            this.label17.Text = "Tasks will need to close browsers before it can remove any extension. ";
+            this.label17.Text = "Tasks will close the browsers before removing any extensions. \r\nMake sure you sav" +
+    "e your work before using this!";
             // 
             // label14
             // 
@@ -874,15 +856,15 @@
             this.label14.ForeColor = System.Drawing.Color.Red;
             this.label14.Location = new System.Drawing.Point(7, 63);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(151, 37);
+            this.label14.Size = new System.Drawing.Size(120, 37);
             this.label14.TabIndex = 43;
-            this.label14.Text = "! Warning !";
+            this.label14.Text = "Caution.";
             // 
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.Location = new System.Drawing.Point(541, 720);
+            this.button3.Location = new System.Drawing.Point(698, 720);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(178, 41);
             this.button3.TabIndex = 38;
@@ -905,7 +887,7 @@
             this.ExtensionsBox.HideSelection = false;
             this.ExtensionsBox.Location = new System.Drawing.Point(16, 253);
             this.ExtensionsBox.Name = "ExtensionsBox";
-            this.ExtensionsBox.Size = new System.Drawing.Size(703, 444);
+            this.ExtensionsBox.Size = new System.Drawing.Size(860, 444);
             this.ExtensionsBox.TabIndex = 42;
             this.ExtensionsBox.UseCompatibleStateImageBehavior = false;
             this.ExtensionsBox.View = System.Windows.Forms.View.Details;
@@ -913,7 +895,7 @@
             // ExtName
             // 
             this.ExtName.Text = "Name";
-            this.ExtName.Width = 250;
+            this.ExtName.Width = 240;
             // 
             // ExtSize
             // 
@@ -923,7 +905,7 @@
             // ExtPath
             // 
             this.ExtPath.Text = "Path";
-            this.ExtPath.Width = 700;
+            this.ExtPath.Width = 650;
             // 
             // label16
             // 
@@ -940,12 +922,12 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(12, 167);
+            this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label15.Location = new System.Drawing.Point(12, 166);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(478, 17);
+            this.label15.Size = new System.Drawing.Size(417, 23);
             this.label15.TabIndex = 40;
-            this.label15.Text = "Select one of the supported browsers that we have detected on your system.";
+            this.label15.Text = "Select a supported browser detected on your system.";
             // 
             // comboBox1
             // 
@@ -956,7 +938,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(16, 208);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(282, 28);
+            this.comboBox1.Size = new System.Drawing.Size(350, 28);
             this.comboBox1.TabIndex = 39;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -966,10 +948,10 @@
             this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label13.Location = new System.Drawing.Point(6, 12);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(631, 38);
+            this.label13.Size = new System.Drawing.Size(413, 38);
             this.label13.TabIndex = 0;
-            this.label13.Text = "This feature sorts out all your extensions for your supported browser, and you ca" +
-    "nselect which ones\r\n you want to remove.";
+            this.label13.Text = "All extensions installed on suppored browsers will be listed here.\r\nYou can choos" +
+    "e which ones to remove.";
             // 
             // tabPage4
             // 
@@ -983,7 +965,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 29);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(725, 767);
+            this.tabPage4.Size = new System.Drawing.Size(964, 767);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Remove Bloatware";
             // 
@@ -992,11 +974,11 @@
             this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(20)))));
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.ForeColor = System.Drawing.SystemColors.Window;
-            this.textBox1.Location = new System.Drawing.Point(12, 385);
+            this.textBox1.Location = new System.Drawing.Point(12, 626);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(688, 347);
+            this.textBox1.Size = new System.Drawing.Size(946, 135);
             this.textBox1.TabIndex = 8;
             this.textBox1.Text = resources.GetString("textBox1.Text");
             // 
@@ -1064,35 +1046,27 @@
             // 
             // btnCleanup
             // 
+            this.btnCleanup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.btnCleanup.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCleanup.ForeColor = System.Drawing.Color.Black;
-            this.btnCleanup.Location = new System.Drawing.Point(525, 816);
+            this.btnCleanup.Location = new System.Drawing.Point(774, 818);
             this.btnCleanup.Name = "btnCleanup";
-            this.btnCleanup.Size = new System.Drawing.Size(160, 34);
+            this.btnCleanup.Size = new System.Drawing.Size(198, 34);
             this.btnCleanup.TabIndex = 18;
             this.btnCleanup.Text = "Clean";
             this.btnCleanup.UseVisualStyleBackColor = true;
             this.btnCleanup.Click += new System.EventHandler(this.btnCleanup_Click);
             // 
-            // btnCopyLogs
+            // toolTip1
             // 
-            this.btnCopyLogs.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnCopyLogs.ForeColor = System.Drawing.Color.Black;
-            this.btnCopyLogs.Location = new System.Drawing.Point(359, 816);
-            this.btnCopyLogs.Name = "btnCopyLogs";
-            this.btnCopyLogs.Size = new System.Drawing.Size(160, 34);
-            this.btnCopyLogs.TabIndex = 37;
-            this.btnCopyLogs.Text = "Copy Cleanup Logs";
-            this.btnCopyLogs.UseVisualStyleBackColor = true;
-            this.btnCopyLogs.Click += new System.EventHandler(this.btnCopyLogs_Click_1);
+            this.toolTip1.IsBalloon = true;
             // 
             // frmCleanup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
-            this.ClientSize = new System.Drawing.Size(1199, 862);
-            this.Controls.Add(this.btnCopyLogs);
+            this.ClientSize = new System.Drawing.Size(984, 862);
             this.Controls.Add(this.btnCleanup);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.CleanupLogsLBox);
@@ -1134,7 +1108,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Button btnCleanup;
-        private System.Windows.Forms.Button btnCopyLogs;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox cbSystemDNSCache;
@@ -1150,15 +1123,11 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Label lblEdgeNotDetected;
         private System.Windows.Forms.CheckBox cbEdgeSearchHistory;
         private System.Windows.Forms.CheckBox cbEdgeCookies;
         private System.Windows.Forms.CheckBox cbEdgeCache;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label lblDiscordNotDetected;
-        private System.Windows.Forms.Label lblChromeNotDetected;
-        private System.Windows.Forms.Label lblFirefoxNotDetected;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox cbChromeCache;
         private System.Windows.Forms.CheckBox cbChromeSessions;
@@ -1181,7 +1150,6 @@
         private System.Windows.Forms.ColumnHeader ExtPath;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.CheckBox cbSystemEventLogs;
         private System.Windows.Forms.CheckBox cbEdgeSessions;
         private System.Windows.Forms.CheckBox cbSystemDirectXCache;
@@ -1197,5 +1165,8 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label lblNotDetected;
+        private System.Windows.Forms.CheckBox cbWindowsDefScanHistory;
     }
 }

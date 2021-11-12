@@ -44,8 +44,7 @@ namespace Tasks
                 }
                 catch (Exception ex)
                 {
-                    CleanupLogsLBox.Items.Add("Exception Thrown: " + ex.Message);
-
+                    CleanupLogsLBox.Items.Add("Exception: " + ex.Message);
                 }
 
             }
@@ -58,7 +57,7 @@ namespace Tasks
                 }
                 catch (Exception ex)
                 {
-                    CleanupLogsLBox.Items.Add("Exception Thrown: " + ex.Message);
+                    CleanupLogsLBox.Items.Add("Exception: " + ex.Message);
                 }
 
             }
@@ -70,21 +69,23 @@ namespace Tasks
 
         private void btnCleanup_Click(object sender, EventArgs e)
         {
-        // List our local directories so we don't need to repeat a lot of code.
+            // List our local directories so we don't need to repeat a lot of code.
             var localappdata = Environment.GetEnvironmentVariable("LocalAppData");
             var roamingappdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             var windowstemp = new DirectoryInfo("C:\\Windows\\Temp");
             var usertemp = new DirectoryInfo(Path.GetTempPath());
             var downloads = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Downloads");
 
+            
+
             if (cbExplorerDownloads.Checked)
                 try
                 {
-                  if (DeleteAllFiles(downloads)) CleanupLogsLBox.Items.Add("Downloads Folder Cleaned.");
+                    if (DeleteAllFiles(downloads)) CleanupLogsLBox.Items.Add("Downloads Folder Cleared.");
                 }
                 catch (Exception ex)
                 {
-                    CleanupLogsLBox.Items.Add("Error cleaning the Downloads Folder. " + ex);
+                    CleanupLogsLBox.Items.Add("Error deleting the Downloads Folder. " + ex);
 
                 }
 
@@ -93,7 +94,7 @@ namespace Tasks
                 {
                     // Silently deletes the recycle bin.
                     SHEmptyRecycleBin(IntPtr.Zero, null, RecycleFlag.SHERB_NOSOUND | RecycleFlag.SHERB_NOCONFIRMATION);
-                    CleanupLogsLBox.Items.Add("Recycle Bin Cleaned.");
+                    CleanupLogsLBox.Items.Add("Recycle Bin Cleared.");
                 }
                 catch (Exception ex)
                 {
@@ -106,8 +107,9 @@ namespace Tasks
             {
                 try
                 {
-                    if (DeleteAllFiles(windowstemp)) CleanupLogsLBox.Items.Add("System Temp Folder Cleaned.");
-                    if (DeleteAllFiles(usertemp)) CleanupLogsLBox.Items.Add("User Temp Folder Cleaned.");
+                    if (DeleteAllFiles(windowstemp)) CleanupLogsLBox.Items.Add("System Temp Folder Deleted.");
+                    if (DeleteAllFiles(usertemp)) CleanupLogsLBox.Items.Add("User Temp Folder Deleted.");
+
                 }
                 catch (Exception ex)
                 {
@@ -116,12 +118,14 @@ namespace Tasks
 
             }
 
+      
+
             if (cbSystemPrefetch.Checked)
             {
                 try
                 {
                     var directory = new DirectoryInfo("C:\\Windows\\Prefetch");
-                    if (DeleteAllFiles(directory)) CleanupLogsLBox.Items.Add("Prefetch Cleaned.");
+                    if (DeleteAllFiles(directory)) CleanupLogsLBox.Items.Add("Prefetch Deleted.");
                 }
                 catch (Exception ex)
                 {
@@ -129,7 +133,7 @@ namespace Tasks
                 }
             }
 
-           
+
 
             if (cbChromeCache.Checked)
             {
@@ -165,7 +169,7 @@ namespace Tasks
                     }
 
                     if (isDeleted)
-                        CleanupLogsLBox.Items.Add("Chrome Cache Cleaned.");
+                        CleanupLogsLBox.Items.Add("Chrome Cache Deleted.");
                 }
                 catch (Exception)
                 {
@@ -208,7 +212,7 @@ namespace Tasks
                 var directory = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\AppData\\Roaming\\discord\\Cache");
                 var directory2 = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\AppData\\Roaming\\discord\\Code Cache");
                 var directory3 = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\AppData\\Roaming\\discord\\GPUCache");
-                if (DeleteAllFiles(directory) & DeleteAllFiles(directory2) & DeleteAllFiles(directory3)) CleanupLogsLBox.Items.Add("Discord Cache Cleaned.");
+                if (DeleteAllFiles(directory) & DeleteAllFiles(directory2) & DeleteAllFiles(directory3)) CleanupLogsLBox.Items.Add("Discord Cache Deleted.");
             }
 
 
@@ -218,7 +222,7 @@ namespace Tasks
 
                     File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\AppData\\Roaming\\discord\\Cookies");
                     File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\AppData\\Roaming\\discord\\Cookies-journal");
-                    CleanupLogsLBox.Items.Add("Discord Cookies Cleaned.");
+                    CleanupLogsLBox.Items.Add("Discord Cookies Deleted.");
 
                 }
                 catch (Exception ex)
@@ -244,7 +248,7 @@ namespace Tasks
                                 try
                                 {
                                     File.Delete(file);
-                                    CleanupLogsLBox.Items.Add("Firefox Cache Cleaned.");
+                                    CleanupLogsLBox.Items.Add("Firefox Cache Deleted.");
                                 }
                                 catch (Exception ex)
                                 {
@@ -257,7 +261,7 @@ namespace Tasks
                                 try
                                 {
                                     Directory.Delete(dir, true);
-                                    CleanupLogsLBox.Items.Add("Firefox Cache Cleaned.");
+                                    CleanupLogsLBox.Items.Add("Firefox Cache Deleted.");
                                 }
                                 catch (Exception ex)
                                 {
@@ -332,13 +336,13 @@ namespace Tasks
                             {
                                 var cookiefile = (direc + "\\cookies.sqlite");
                                 File.Delete(cookiefile);
-                                CleanupLogsLBox.Items.Add("Firefox Cookies Cleaned.");
+                                CleanupLogsLBox.Items.Add("Firefox Cookies Deleted.");
 
                             }
                             catch (Exception ex)
                             {
 
-                                CleanupLogsLBox.Items.Add("Error while trying to delete Firefox cookies! \n" + ex);
+                                CleanupLogsLBox.Items.Add("Error while trying to delete Firefox cookies. " + ex);
                             }
 
                         }
@@ -347,7 +351,7 @@ namespace Tasks
                 }
                 catch (Exception ex)
                 {
-                    CleanupLogsLBox.Items.Add("Error while trying to delete Firefox cookies! \n" + ex);
+                    CleanupLogsLBox.Items.Add("Error while trying to delete Firefox cookies. " + ex);
                 }
 
 
@@ -366,13 +370,13 @@ namespace Tasks
                             {
                                 var cookiefile = (direc + "\\places.sqlite");
                                 File.Delete(cookiefile);
-                                CleanupLogsLBox.Items.Add("Firefox History Cleaned.");
+                                CleanupLogsLBox.Items.Add("Firefox History Deleted.");
 
                             }
                             catch (Exception ex)
                             {
 
-                                CleanupLogsLBox.Items.Add("Error while trying to clean Firefox History." + ex);
+                                CleanupLogsLBox.Items.Add("Error while trying to delete Firefox History." + ex);
 
                             }
 
@@ -382,7 +386,7 @@ namespace Tasks
                 }
                 catch (Exception ex)
                 {
-                    CleanupLogsLBox.Items.Add("Error when trying to delete Firefox History! \n" + ex);
+                    CleanupLogsLBox.Items.Add("Error when trying to delete Firefox History. " + ex);
                 }
             }
 
@@ -465,21 +469,21 @@ namespace Tasks
 
             if (cbEdgeCache.Checked) //Edge cache
             {
-             try
-                 {
-                var directory = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default\\Cache\\");
-                var directory2 = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default\\Code Cache\\");
-                var directory3 = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default\\GPUCache\\");
-                var directory4 = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\AppData\\Local\\Microsoft\\Edge\\User Data\\ShaderCache\\");
-                var directory5 = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default\\Service Worker\\CacheStorage\\");
-                var directory6 = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default\\Service Worker\\ScriptCache\\");
-                var directory7 = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\AppData\\Local\\Microsoft\\Edge\\User Data\\GrShaderCache\\GPUCache\\");
-                var directory8 = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default\\Service Worker\\Database\\");
-                if (DeleteAllFiles(directory) & DeleteAllFiles(directory2) & DeleteAllFiles(directory3) & DeleteAllFiles(directory4) & DeleteAllFiles(directory5) & DeleteAllFiles(directory6) & DeleteAllFiles(directory7) & DeleteAllFiles(directory8)) CleanupLogsLBox.Items.Add("Edge Cache Deleted.");
+                try
+                {
+                    var directory = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default\\Cache\\");
+                    var directory2 = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default\\Code Cache\\");
+                    var directory3 = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default\\GPUCache\\");
+                    var directory4 = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\AppData\\Local\\Microsoft\\Edge\\User Data\\ShaderCache\\");
+                    var directory5 = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default\\Service Worker\\CacheStorage\\");
+                    var directory6 = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default\\Service Worker\\ScriptCache\\");
+                    var directory7 = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\AppData\\Local\\Microsoft\\Edge\\User Data\\GrShaderCache\\GPUCache\\");
+                    var directory8 = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default\\Service Worker\\Database\\");
+                    if (DeleteAllFiles(directory) & DeleteAllFiles(directory2) & DeleteAllFiles(directory3) & DeleteAllFiles(directory4) & DeleteAllFiles(directory5) & DeleteAllFiles(directory6) & DeleteAllFiles(directory7) & DeleteAllFiles(directory8)) CleanupLogsLBox.Items.Add("Edge Cache Deleted.");
                 }
                 catch
                 {
-                CleanupLogsLBox.Items.Add("Error while deleting Edge Cache.");
+                    CleanupLogsLBox.Items.Add("Error while deleting Edge Cache.");
                 }
             }
 
@@ -490,13 +494,12 @@ namespace Tasks
                     foreach (var eventLog in EventLog.GetEventLogs())
                     {
                         eventLog.Clear();
-                        eventLog.Dispose();
                         CleanupLogsLBox.Items.Add("Event Logs Deleted.");
                     }
                 }
                 catch (Exception ex)
                 {
-                    CleanupLogsLBox.Items.Add("Error deleting Event Logs: " + ex);
+                    CleanupLogsLBox.Items.Add("Error deleting Event Logs. " + ex);
                 }
 
 
@@ -572,23 +575,19 @@ namespace Tasks
 
             if (cbChromeSavedPasswords.Checked)
             {
-                var directory = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Login Data\\");
-                if (DeleteAllFiles(directory)) CleanupLogsLBox.Items.Add("Chrome Saved Passwords Deleted.");
+                try
+                {
+                    var directory = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Login Data\\");
+                    if (DeleteAllFiles(directory)) CleanupLogsLBox.Items.Add("Chrome Saved Passwords Deleted.");
+                }
+                catch
+                {
+                    CleanupLogsLBox.Items.Add("Error while deleting Chrome Saved Passwords.");
+                }
+              
             }
 
-
-
-            if (CleanupLogsLBox.Items.Count < 2) btnCopyLogs.Enabled = true;
-
-
-
-
-        }
-
-        private void btnCopyLogs_Click_1(object sender, EventArgs e)
-        {
-            CleanupLogsLBox.Items.Add("Cleanup Logs copied to clipboard.");
-            Clipboard.SetText(string.Join("\n", CleanupLogsLBox.Items.Cast<string>()));
+            WriteCleanupSummary();
         }
 
 
@@ -597,14 +596,13 @@ namespace Tasks
             if (tabControl1.SelectedTab.Text == "Browser Extensions") // i dont want it to show up in the extensions thing because i'll use a diff button to make the code less messy
             {
                 btnCleanup.Visible = false;
-                btnCopyLogs.Visible = false;
+             
             }
             else
             {
-                if (!btnCleanup.Visible && !btnCopyLogs.Visible)
+                if (!btnCleanup.Visible)
                 {
                     btnCleanup.Visible = true;
-                    btnCopyLogs.Visible = true;
 
                 }
             }
@@ -701,10 +699,6 @@ namespace Tasks
                     extb.SubItems.Add("~ " + ByteSize.FromBytes(ext.Length).ToString());
 
                     extb.SubItems.Add(ext);
-
-
-
-
                 }
 
 
@@ -735,9 +729,7 @@ namespace Tasks
                             }
                             catch (Exception Exc)
                             {
-
                                 MessageBox.Show(Exc.ToString());
-
                             }
                         }
                     }
@@ -766,8 +758,6 @@ namespace Tasks
 
                     extb.SubItems.Add(ext);
                 }
-
-
             }
         }
 
@@ -802,17 +792,11 @@ namespace Tasks
                         }
                     }
                 }
-                
-                
-            
-            
-                
-            
 
-            if (comboBox1.Text == "Mozilla Firefox")
-            {
+                if (comboBox1.Text == "Mozilla Firefox")
+                {
                     Taskkill.Browser(2);
-                    Thread.Sleep(75); //Short threadsleep or else the extension deleter would start before firefox is fully killed for some reasons ?
+                    Thread.Sleep(75); //Short threadsleep or else the extension deleter would start before firefox is fully killed for some reasons?
 
                     try
                     {
@@ -826,13 +810,11 @@ namespace Tasks
                     }
                     catch
                     {
-                        CleanupLogsLBox.Items.Add("Failed to remove extension");
+                        CleanupLogsLBox.Items.Add("Failed to remove extension.");
 
                     }
-           
-         
-               
-            }
+
+                }
 
 
                 if (comboBox1.Text == "Microsoft Edge")
@@ -864,64 +846,33 @@ namespace Tasks
                 MessageBox.Show("Please select an extension to remove.");
             }
 
-
-         
-
-
         }
-
-
 
         private void button5_Click(object sender, EventArgs e)
         {
-            try
-            {
-                RunFile.RunBat("Scripts/BatFiles/byesolitaire.bat", true);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred." + ex);
-            }
-
+            try { RunFile.RunBat("Scripts/BatFiles/byesolitaire.bat", true); }
+            catch (Exception ex) { MessageBox.Show("An error occurred." + ex); }
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Process.Start("powershell", "-ExecutionPolicy Bypass -File Scripts/Debloater/DisableCortana.ps1");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred." + ex);
-            }
+            try { Process.Start("powershell", "-ExecutionPolicy Bypass -File Scripts/Debloater/DisableCortana.ps1"); }
+            catch (Exception ex) { MessageBox.Show("An error occurred." + ex); }
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Process.Start("powershell", "-ExecutionPolicy Bypass  -File Scripts/Debloater/UninstallOneDrive.ps1");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred." + ex);
-            }
-
-
+            try { Process.Start("powershell", "-ExecutionPolicy Bypass  -File Scripts/Debloater/UninstallOneDrive.ps1"); }
+            catch (Exception ex) { MessageBox.Show("An error occurred." + ex); }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            RunFile.RunBat("removeedge.bat", true);
+            try { RunFile.RunBat("removeedge.bat", true); }
+            catch (Exception ex){ MessageBox.Show("An error occurred." + ex); }
         }
-
         private void DirectoryExists()
         {
-
-
-            // Todo: Check if the applications are on the computer and disable the checkboxes if it doesn't exist.
             var localappdata = Environment.GetEnvironmentVariable("LocalAppData");
             var roamingappdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             Dirs.chromeDir = localappdata + "\\Google\\Chrome\\";
@@ -930,7 +881,7 @@ namespace Tasks
             Dirs.firefoxExtDir = roamingappdata + "\\Mozilla\\Firefox\\Profiles\\";
             Dirs.edgeDir = (Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\AppData\\Local\\Microsoft\\Edge\\");
             Dirs.edgeExtDir = (Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default\\Extensions\\");
-            Dirs.discordDir = localappdata + "\\Discord\\"; // Makes more sense checking appdata than program files
+            Dirs.discordDir = localappdata + "\\Discord\\";
 
 
             if (!Directory.Exists(Dirs.chromeDir))
@@ -940,7 +891,7 @@ namespace Tasks
                 cbChromeSearchHistory.Enabled = false;
                 cbChromeSessions.Enabled = false;
                 cbChromeSavedPasswords.Enabled = false;
-                lblChromeNotDetected.Visible = true;
+                lblNotDetected.Visible = true;
             }
 
             if (!Directory.Exists(Dirs.firefoxDir))
@@ -948,14 +899,14 @@ namespace Tasks
                 cbFirefoxCache.Enabled = false;
                 cbFirefoxCookies.Enabled = false;
                 cbFirefoxSearchHistory.Enabled = false;
-                lblFirefoxNotDetected.Visible = true;
+                lblNotDetected.Visible = true;
             }
 
             if (!Directory.Exists(Dirs.discordDir))
             {
                 cbDiscordCache.Enabled = false;
                 cbDiscordCookies.Enabled = false;
-                lblDiscordNotDetected.Visible = true;
+                lblNotDetected.Visible = true;
 
             }
 
@@ -965,54 +916,38 @@ namespace Tasks
                 cbEdgeCookies.Enabled = false;
                 cbEdgeSearchHistory.Enabled = false;
                 cbEdgeSessions.Enabled = false;
-                lblEdgeNotDetected.Visible = true;
+                lblNotDetected.Visible = true;
 
             }
         }
 
         private void cbEdgeCookies_CheckStateChanged(object sender, EventArgs e)
         {
-            try
-            {
-                taskDialog1.Show();
-            } catch
-            {
-                Console.WriteLine("An error happened.");
-            }
-            
+            try { taskDialog1.Show(); }
+            catch { Console.WriteLine("An error has occurred."); }
         }
-
-        private void cbChromeCache_CheckStateChanged(object sender, EventArgs e)
-        {
-         
-        }
-
         private void cbFirefoxCookies_CheckStateChanged(object sender, EventArgs e)
         {
-            try
-            {
-                taskDialog1.Show();
-            }
-            catch
-            {
-                Console.WriteLine("An error happened.");
-            }
+            try { taskDialog1.Show(); }
+            catch { Console.WriteLine("An error has occurred."); }
         }
 
         private void cbChromeCookies_CheckStateChanged(object sender, EventArgs e)
         {
-            try
-            {
-                taskDialog1.Show();
-            }
-            catch
-            {
-                Console.WriteLine("An error happened.");
-            }
-           
+            try { taskDialog1.Show(); }
+            catch { Console.WriteLine("An error has occurred."); }
         }
 
+        public void WriteCleanupSummary()
+        {
+            int t = (int)((DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds);
+            File.WriteAllLines(
+              Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Tasks"), "Cleanup Summary") + "\\tasks-cleanup-summary-" + t + ".txt",
+              CleanupLogsLBox.Items.Cast<string>().ToArray()
+            );
+            MessageBox.Show("Cleanup is logged at " + Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "Tasks\\" + "Cleanup Summary" +"\\tasks-cleanup-summary-" + t + ".txt");
 
+
+        }
     }
 }
-

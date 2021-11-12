@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,18 +11,12 @@ using System.Windows.Forms;
 
 namespace Tasks
 {
-    public partial class frmCreateNewProcess : Form
-    {
-        public frmCreateNewProcess()
-        {
-            InitializeComponent();
-        }
-
+    public partial class frmCreateNewProcess : Form { public frmCreateNewProcess(){ InitializeComponent(); }
+                                                     
         private void button2_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog ofd = new OpenFileDialog() { Filter = "Executables|*.exe*" })
+            using (OpenFileDialog ofd = new OpenFileDialog() { Filter = "Executables|*.exe" })
             {
-                // If statement because if you closed it would throw an exception
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     try
@@ -32,28 +26,26 @@ namespace Tasks
                     }
                     catch(Exception ex)
                     {
-                        MessageBox.Show("An error has occurred: " + ex.Message);
+                        MessageBox.Show("An error has occurred. " + ex.Message);
                     }
                    
                 }
-                else
-                {
-                    // Do Nothing.
-                }
+                else { }
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
-        
+        {     
          try
            {
              Process.Start(textBox1.Text);
            } 
             catch(Exception ex)
             {
-                 MessageBox.Show("An error has occurred: " + ex.Message);
+                 MessageBox.Show("An error has occurred. " + ex.Message);
             }
         }
+                                                  
+                                                
     }
 }

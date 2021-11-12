@@ -22,10 +22,12 @@ namespace Tasks
                     process.WaitForExit();
                 }
                 return 0;
+        
             }
             catch
             {
                 return 1;
+               
             }
         }
 

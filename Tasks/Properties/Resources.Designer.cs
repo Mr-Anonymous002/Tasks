@@ -163,16 +163,6 @@ namespace Tasks.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Placeholder {
-            get {
-                object obj = ResourceManager.GetObject("Placeholder", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Recycle {
             get {
                 object obj = ResourceManager.GetObject("Recycle", resourceCulture);
@@ -196,26 +186,6 @@ namespace Tasks.Properties {
         internal static System.Drawing.Bitmap RemoveBloat_White {
             get {
                 object obj = ResourceManager.GetObject("RemoveBloat White", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Settings {
-            get {
-                object obj = ResourceManager.GetObject("Settings", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap SettingsWhite {
-            get {
-                object obj = ResourceManager.GetObject("SettingsWhite", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -263,16 +233,6 @@ namespace Tasks.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Steam {
-            get {
-                object obj = ResourceManager.GetObject("Steam", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Task_Manager {
             get {
                 object obj = ResourceManager.GetObject("Task Manager", resourceCulture);
@@ -293,16 +253,6 @@ namespace Tasks.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Tasks_128x128 {
-            get {
-                object obj = ResourceManager.GetObject("Tasks 128x128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Tasks_256x256_Logo {
             get {
                 object obj = ResourceManager.GetObject("Tasks 256x256 Logo", resourceCulture);
@@ -316,26 +266,6 @@ namespace Tasks.Properties {
         internal static System.Drawing.Bitmap Tasks_256x256_v2 {
             get {
                 object obj = ResourceManager.GetObject("Tasks 256x256 v2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Tasks_512x512 {
-            get {
-                object obj = ResourceManager.GetObject("Tasks 512x512", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Tasks_64x64 {
-            get {
-                object obj = ResourceManager.GetObject("Tasks 64x64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
