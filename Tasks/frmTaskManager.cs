@@ -21,13 +21,29 @@ namespace Tasks {
 
             Task<List<ProcessInfoEx>> ProcessInfoList = Task.Run(async () => await GetProcessAsync());
             ProcessInfoList.GetAwaiter().OnCompleted(() => ListProcess(ProcessInfoList.Result));
+
+            CheckTheme();
         }
 
         private void frmTaskManager_Load(object sender, System.EventArgs e)
         {
-         
+            CheckTheme();
         }
 
+        public void CheckTheme()
+        {
+            if (Properties.Settings.Default.Theme == "dark")
+            {
+                
+            }
+
+            if (Properties.Settings.Default.Theme == "light")
+            {
+                listView1.BackColor = Color.White;
+                listView1.ForeColor = Color.Black;
+                this.BackColor = Color.FromArgb(240, 240, 240);
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -119,7 +135,8 @@ namespace Tasks {
                     lvsisi.Text = ProcessInfo.TargetProcess.Id.ToString(); // Process PID
                     lvi.SubItems.Add(lvsisi);
 
-                    Task<double> ProcessCPUTask = Task.Run(async () => await GetProcessCPUPercentUsage(ProcessInfo.TargetProcess));
+
+                    Task<double> ProcessCPUTask = Task.Run(async () => GetProcessCPUPercentUsage(ProcessInfo.TargetProcess));
 
                     ProcessCPUTask.GetAwaiter().OnCompleted(() => SetProcessCPU(lvsisi2, ProcessCPUTask.Result.ToString()));
 
@@ -128,8 +145,6 @@ namespace Tasks {
                     this.listView1.Items.Add(lvi);
 
                     ID += 1;
-
-
                 }
                 catch (Exception ex)
                 {
@@ -154,7 +169,7 @@ namespace Tasks {
             try
             {
 
-                var wmiQueryString = "SELECT ProcessId, ExecutablePath, CommandLine, Description FROM Win32_Process";
+                var wmiQueryString = "SELECT ProcessId, ExecutablePath, CommandLine, Status FROM Win32_Process";
 
                 ManagementObjectSearcher searcher = new ManagementObjectSearcher(wmiQueryString);
 
@@ -180,9 +195,9 @@ namespace Tasks {
                             InfoProc.ComandLine = QueryObject["CommandLine"].ToString();
                         }
 
-                        if (QueryObject["Description"] != null)
+                        if (QueryObject["Status"] != null)
                         {
-                            InfoProc.ComandLine = QueryObject["Description"].ToString();
+                            InfoProc.ComandLine = QueryObject["Status"].ToString();
                         }
 
                         TempList.Add(InfoProc);
@@ -206,8 +221,6 @@ namespace Tasks {
 
         }
 
-
-        /// XylonV2.Antivir.API Code Extracted and converted to C#
         /// ----------------------------------------------------------------------------------------------------
 
         ///     ''' <summary>
@@ -226,7 +239,7 @@ namespace Tasks {
 
         ///     ''' ----------------------------------------------------------------------------------------------------
         [DebuggerStepThrough]
-        public async Task<double> GetProcessCPUPercentUsage(Process p)
+        public double GetProcessCPUPercentUsage(Process p)
         {
             using (PerformanceCounter perf = new PerformanceCounter("Process", "% Processor Time", p.ProcessName, true))
             {
@@ -242,7 +255,7 @@ namespace Tasks {
             public Process TargetProcess = null;
             public string Path = string.Empty;
             public string ComandLine = string.Empty;
-            public string Description = string.Empty;
+            public string Status = string.Empty;
         }
 
 
@@ -258,12 +271,7 @@ namespace Tasks {
             ProcessInfoList.GetAwaiter().OnCompleted(() => ListProcess(ProcessInfoList.Result));
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-
-        }
     }
 
- 
 
     }

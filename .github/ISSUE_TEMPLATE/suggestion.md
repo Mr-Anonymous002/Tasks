@@ -7,11 +7,23 @@ assignees: byronbytes
 
 ---
 
-**Suggestions List**
+# List of Suggestions
 List your suggestions below.
 
-Format: (SUGGESTION DETAILS) : (HOW TO IMPLEMENT).
+-
+-
+-
+
+## Reason for Improvement
+Please give us reasons why we should imploment these.
+
+-
+-
+-
+
+## Are these related to an issue / PR?
+If it is related, please paste the issue or PR that is related.
+
+Link to Issue (If applicable):
 
 
-**Reason for Improvement**
-Provide your reason for why should we implement the suggestion here.

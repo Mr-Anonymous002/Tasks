@@ -4,20 +4,27 @@
 </h1>
 
 # Security Policy
-This is the current Security Policy for Tasks. Last updated on November 3rd, 2021.
+This is the current Security Policy for Tasks. Last updated on December 7th, 2021.
+
+## About
+This is the guideline for reporting security vulnerabilities. If you have found one it is very important you report it as soon as possible before any malicious intents get to any other people.
 
 ## Reporting a Vulnerability
-To report any vulnerabilities, please create a new Issue using the **Security Vulnerability** template (Click [here](https://github.com/LiteTools/Tasks/issues) to go to the Issues Tab).
+To report a new vulnerability, please create a new issue using the **Security Vulnerability** template. Click [here](https://github.com/LiteTools/Tasks/issues) to go to the Issues Tab.
+
+### Notice
+Even though Tasks is more of a "local" application and does not have a public API yet, there can still be vulnerabilites within our code. 
+
+
 
 ### Supported Versions
-These are the supported versions of Tasks. Please note that we will not fix vulnerabilities in older versions.
+These are the supported versions of Tasks. We will not fix vulnerabilities in older versions that are marked with the :x: sign.
 
-| Version             | Supported          | Release Date         | Discontinuation Date |
-| :------------------ | :----------------: | :--------------:     | :------------------: |
-| **2.1.1** (R)       | ✅                 | 24th October, 2021     | N/A
-| **2.1.0** (R)       | ✅                 | 22nd October, 2021     | N/A
-| **2.0.0** (R)       | ✅                 | 20th September, 2021 | N/A                  |
-| **2.0.0 PreRelease** (PR) | :x:                | 7th August, 2021     | 31st November 2021   |
-| **1.x.x** (L)       | :x:                | 24th July, 2021      | 7th August 2021      |
-
-Legend: *(R: release ; PR: pre-release ; L: Legacy)*
+| Version             | Supported          | Release Date         | Discontinuation Date | Version Type |
+| :------------------ | :----------------: | :--------------:     | :------------------: | :------------------: | 
+| **2.2.0**           | ✅                 | 12th November, 2021  | N/A                  | Release| 
+| **2.1.1**           | ✅                 | 24th October, 2021   | N/A                  | Release |
+| **2.1.0**           | ✅                 | 22nd October, 2021   | N/A                  | Release |
+| **2.0.0**           | :x:                 | 20th September, 2021 | December 14th 2021   | Release |
+| **2.0.0 PRE**| :x:                | 7th August, 2021     | 31st November 2021   | Pre - Release |
+| **1.x.x**           | :x:                | 24th July, 2021      | 7th August 2021      | Legacy |
